@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --fg: #1a1c20;
+  --muted: #5b6068;
+  --line: #dcdcd6;
+  --accent: #2646b5;
+  --accent-fg: #ffffff;
+  --accent-soft: #e6ebfb;
+  --ok-bg: #dcf5e4; --ok-fg: #14532d;
+  --warn-bg: #fdf0c8; --warn-fg: #6b3d06;
+  --bad-bg: #fde2e2; --bad-fg: #7f1d1d;
+  --idle-bg: #e7e8ea; --idle-fg: #3b4048;
+  --track: #e9e9e4;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121316;
+    --surface: #1a1c21;
+    --fg: #ececee;
+    --muted: #a0a5ae;
+    --line: #2d3037;
+    --accent: #8ba6ff;
+    --accent-fg: #0e1530;
+    --accent-soft: #1f2845;
+    --ok-bg: #123421; --ok-fg: #8de5ab;
+    --warn-bg: #3b2e0a; --warn-fg: #f6cf6b;
+    --bad-bg: #431818; --bad-fg: #ffadad;
+    --idle-bg: #2b2e35; --idle-fg: #cfd3da;
+    --track: #2a2d34;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-track: var(--track);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+html { background: var(--bg); color: var(--fg); font-family: var(--font-sans); -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; line-height: 1.5; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.chip { display: inline-flex; align-items: center; gap: .35rem; padding: .15rem .6rem; border-radius: 999px; font-size: .8125rem; font-weight: 600; white-space: nowrap; }
+.chip-ok { background: var(--ok-bg); color: var(--ok-fg); }
+.chip-warn { background: var(--warn-bg); color: var(--warn-fg); }
+.chip-bad { background: var(--bad-bg); color: var(--bad-fg); }
+.chip-idle { background: var(--idle-bg); color: var(--idle-fg); }
+
+.bar-fill { transition: width 700ms cubic-bezier(.2, .7, .2, 1); }
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill { transition: none; }
+  .spin { animation: none !important; }
+}
+.spin { animation: spin 900ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

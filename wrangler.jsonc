@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "photocheck",
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "ai": { "binding": "AI" },
+  "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "photocheck-photos" }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "photocheck",
+      "migrations_dir": "migrations"
+      // No database_id: wrangler creates the database on the first deploy.
+    }
+  ]
+  // Optional secret: `wrangler secret put UPLOAD_TOKEN`
+}

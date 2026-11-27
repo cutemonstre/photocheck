@@ -1,0 +1,52 @@
+{
+  "name": "photocheck",
+  "version": "0.1.0",
+  "description": "Smart validation for photo uploads, using Cloudflare's Clef decision model on Workers AI.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "photocheck": "dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "photocheck": "tsx src/cli/index.ts",
+    "build": "vite build",
+    "build:cli": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.app.json --noEmit",
+    "test": "vitest run",
+    "dev": "vite dev --port 8788",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.46",
+    "@tanstack/react-start": "^1.169.7",
+    "aws4fetch": "^1.0.20",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.70.2",
+    "@cloudflare/workers-types": "^5.20261127.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.11",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.4.0",
+    "vitest": "^5.1.2",
+    "wrangler": "^4.169.0"
+  }
+}
